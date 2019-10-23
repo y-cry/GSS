@@ -1,6 +1,6 @@
 ---
 title: "General Social Survey"
-author: "Your Name"
+author: "Savannah Johnson"
 date: "Year 2019"
 output: 
   html_document:
@@ -52,12 +52,26 @@ This data is from the 2018 General Social Survey. The first blocks of R-code has
 #### Graphical Descriptive Results
 
 <!--Graphical results here.  Make sure to show your code.  Provide appropriate labels for axes, giving units if possible, and provide a good title for the graph, too.  Use the graphical results to describe the patterns if any that exist in the data as focused toward the research question!-->
+```{r}
+barchartGC(~CAPPUN + OWNGUN,data=mydata4)
+barchartGC(~CAPPUN + OWNGUN,data=mydata4,type="percent")
+```
+
 
 #### Numerical Descriptive Results
 
 <!--Numerical results go here. Use the numerical results to describe the patterns if any that exist in the data as focused toward the research question!-->
+```{r}
+table1 <- xtabs(~CAPPUN + OWNGUN, data=mydata4)
+rowPerc(table1)
+colPerc(table1)
+```
 
 ### Inferential Results
+```{r}
+chisq.test(table1)
+chisqtestGC(table1)
+```
 
 <!--State hypothesis clearly.  Make sure your discussion of the inferential test covers all the aspects that the test output produces, such as test statistic, p-value etc.  Make a decision about the null hypothesis, explain the assumptions on which the selected test/procedure was based, and why the chosen procedure satisfys the assumptions and is appropriate to answer the research question!-->
 
