@@ -38,25 +38,34 @@ levels(mydata4$VOTE12)[2] <- "no in 12"
 
 This data is from the 2018 General Social Survey. The first blocks of R-code has selected down a subset of the data to just 15 variables. It has further removed unwanted factor levels in much of the data. Examine that code to see what it is doing. Finally address this question.  Is opinion on the death penalty (CAPPUN) independent of gun ownership (OWNGUN)?
 
+$H_0$:There is no difference in the people who agree on both the death penalty and the right to own guns.
+
+$H_0$:There is a statistical difference between the people who agree on the death penalty and the right to own guns.
 
 ## Methods
 
 <!--Decide on your methods:  use "variable analysis" or other appropriate descriptors.  Make sure to choose at least one graphical method and at least one numerical method.!-->
 
-##Results
+We will be using both graphical descriptive and numerical descriptive results.
+
+## Results
 
 <!--Divide this section into two sub-sections:  One for your descriptive  results and one for your inferential results.!-->
 
 ### Descriptive Results
+The results concluded that there is a statistical difference between the people who are in favor of the death penalty and the people in favor of gun rights.
 
 #### Graphical Descriptive Results
 
 <!--Graphical results here.  Make sure to show your code.  Provide appropriate labels for axes, giving units if possible, and provide a good title for the graph, too.  Use the graphical results to describe the patterns if any that exist in the data as focused toward the research question!-->
+
+We use barcharts to compare Numerical vs Numerical data.
+
 ```{r}
 barchartGC(~CAPPUN + OWNGUN,data=mydata4)
 barchartGC(~CAPPUN + OWNGUN,data=mydata4,type="percent")
 ```
-
+In these charts you can see that the amount of people in favor of the death penalty is almost equivelant to the amount of people against it. While the amount of people who oppose the right to own guns is significantly higher than those in favor.
 
 #### Numerical Descriptive Results
 
@@ -66,6 +75,7 @@ table1 <- xtabs(~CAPPUN + OWNGUN, data=mydata4)
 rowPerc(table1)
 colPerc(table1)
 ```
+This table shows that 48% of the people were in favor of the death penalty, while 52% was against it. It also shows that 29% of the people are against the right to own a gun, while 71% are in favor.
 
 ### Inferential Results
 ```{r}
@@ -81,10 +91,15 @@ chisqtestGC(table1)
 
 Now answer Is belief in the bigbang theory (BIGBANG) independent of belief in the afterlife (POSTLIFE)
 
+$H_0$:There is no difference in the people who believe on both the big bang and an afterlife.
+
+$H_0$:There is a statistical difference between the people who believe on the big bang and an afterlife.
+
 ## Methods
 
 <!--Decide on your methods:  use "variable analysis" or other appropriate descriptors.  Make sure to choose at least one graphical method and at least one numerical method.!-->
 
+We will be using both graphical descriptive and numerical descriptive results.
 ##Results
 
 <!--Divide this section into two sub-sections:  One for your descriptive  results and one for your inferential results.!-->
@@ -92,6 +107,8 @@ Now answer Is belief in the bigbang theory (BIGBANG) independent of belief in th
 ### Descriptive Results
 
 #### Graphical Descriptive Results
+
+We use barcharts to compare Numerical vs Numerical data.
 
 <!--Graphical results here.  Make sure to show your code.  Provide appropriate labels for axes, giving units if possible, and provide a good title for the graph, too.  Use the graphical results to describe the patterns if any that exist in the data as focused toward the research question!-->
 ```{r}
@@ -103,6 +120,19 @@ barchartGC(~POSTLIFE + BIGBANG,data=mydata4,type="percent")
 
 <!--Numerical results go here. Use the numerical results to describe the patterns if any that exist in the data as focused toward the research question!-->
 
+```{r}
+table1 <- xtabs(~BIGBANG + POSTLIFE,data=mydata4)
+rowPerc(table1)
+colPerc(table1)
+```
+
+```{r}
+colPerc(table1)
+```
+
+
+
+
 ### Inferential Results
 
 <!--State hypothesis clearly.  Make sure your discussion of the inferential test covers all the aspects that the test output produces, such as test statistic, p-value etc.  Make a decision about the null hypothesis, explain the assumptions on which the selected test/procedure was based, and why the chosen procedure satisfys the assumptions and is appropriate to answer the research question!-->
@@ -110,6 +140,7 @@ barchartGC(~POSTLIFE + BIGBANG,data=mydata4,type="percent")
 # Introduction Question 3
 
 <!--In this section you explain what you are trying to show.  Where did the data come from?  What is the research or other question you are trying to answer?!-->
+I reject the null hypothesis due to the p-value is 2%
 
 Finally determine if a persons opinion on death penalty (CAPPUN) is independent of their race (RACE).
 
@@ -126,6 +157,10 @@ Finally determine if a persons opinion on death penalty (CAPPUN) is independent 
 #### Graphical Descriptive Results
 
 <!--Graphical results here.  Make sure to show your code.  Provide appropriate labels for axes, giving units if possible, and provide a good title for the graph, too.  Use the graphical results to describe the patterns if any that exist in the data as focused toward the research question!-->
+```{r}
+barchartGC(~CAPPUN + RACE,data=mydata4)
+barchartGC(~RACE + CAPPUN,data=mydata4,type="percent")
+```
 
 #### Numerical Descriptive Results
 
