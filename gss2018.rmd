@@ -140,15 +140,21 @@ colPerc(table1)
 # Introduction Question 3
 
 <!--In this section you explain what you are trying to show.  Where did the data come from?  What is the research or other question you are trying to answer?!-->
-I reject the null hypothesis due to the p-value is 2%
+
 
 Finally determine if a persons opinion on death penalty (CAPPUN) is independent of their race (RACE).
+
+\(H_0\):There is a difference in the poeple opinion on independent race of the death penalty.
+
+\(H_A\):There is a statistical difference between the people  independent race of the death penalty.
 
 ## Methods
 
 <!--Decide on your methods:  use "variable analysis" or other appropriate descriptors.  Make sure to choose at least one graphical method and at least one numerical method.!-->
 
-##Results
+We will be using both graphical descriptive and numerical descriptive results.
+
+## Results
 
 <!--Divide this section into two sub-sections:  One for your descriptive  results and one for your inferential results.!-->
 
@@ -166,7 +172,18 @@ barchartGC(~RACE + CAPPUN,data=mydata4,type="percent")
 
 <!--Numerical results go here. Use the numerical results to describe the patterns if any that exist in the data as focused toward the research question!-->
 
+```{r}
+table1 <- xtabs(~CAPPUN + RACE,data=mydata4)
+rowPerc(table1)
+colPerc(table1)
+```
+
 ### Inferential Results
+
+```{r}
+chisq.test(table1)
+chisqtestGC(table1)
+```
 
 <!--State hypothesis clearly.  Make sure your discussion of the inferential test covers all the aspects that the test output produces, such as test statistic, p-value etc.  Make a decision about the null hypothesis, explain the assumptions on which the selected test/procedure was based, and why the chosen procedure satisfys the assumptions and is appropriate to answer the research question!-->
 
@@ -175,3 +192,4 @@ barchartGC(~RACE + CAPPUN,data=mydata4,type="percent")
 
 <!--Discussion and conclusion here.  If you found a relationship be sure to consider whether the relationship occurs because one of the variavbles causes the other, or whether they perhasps are related for some other reason.  Watch the chapter 6 videos from the GeorgeTown videos collection.!-->
 
+We reject the null hypothesis that there's no difference between the means and conclude that a significant difference does exist.
